@@ -15,13 +15,16 @@ export default function GameCard({ game }: GameCardProps) {
   return (
     <div className="group flex cursor-pointer flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-teal-600/10">
       {/* Image area */}
-      <div className="relative h-[190px] overflow-hidden">
+      <div
+        className="relative h-[190px] overflow-hidden"
+        style={{ backgroundColor: game.ibg }}
+      >
         {!imgError ? (
           <Image
             src={game.photo}
             alt={game.name}
             fill
-            className="object-cover transition-transform group-hover:scale-105"
+            className="object-contain transition-transform group-hover:scale-105"
             onError={() => setImgError(true)}
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 295px"
           />

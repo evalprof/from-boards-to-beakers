@@ -193,13 +193,16 @@ export default function GameDetail({ game }: { game: Game }) {
       </div>
 
       {/* Header image */}
-      <div className="relative h-[240px] overflow-hidden rounded-t-2xl mx-6 sm:h-[300px]">
+      <div
+        className="relative h-[240px] overflow-hidden rounded-t-2xl mx-6 sm:h-[300px]"
+        style={{ backgroundColor: game.ibg }}
+      >
         {!imgError ? (
           <Image
             src={game.photo}
             alt={game.name}
             fill
-            className="object-cover"
+            className="object-contain"
             onError={() => setImgError(true)}
             sizes="(max-width: 768px) 100vw, 720px"
             priority
