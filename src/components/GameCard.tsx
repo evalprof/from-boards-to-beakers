@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { Game } from "@/data/types";
 import { useState } from "react";
 
@@ -74,9 +75,12 @@ export default function GameCard({ game }: GameCardProps) {
 
       {/* Footer */}
       <div className="flex gap-2 border-t border-gray-100 p-4">
-        <button className="flex-1 rounded-lg bg-teal-600 px-3 py-2 text-sm font-bold text-white transition-colors hover:bg-teal-800">
+        <Link
+          href={`/games/${game.id}`}
+          className="flex flex-1 items-center justify-center rounded-lg bg-teal-600 px-3 py-2 text-sm font-bold text-white transition-colors hover:bg-teal-800"
+        >
           View Activity Sheet
-        </button>
+        </Link>
         <button className="rounded-lg border border-gray-200 px-3 py-2 text-sm font-bold text-gray-600 transition-colors hover:bg-gray-100">
           {"⬇"} PDF
         </button>
