@@ -32,6 +32,8 @@ export interface Game {
   bgg: number;
   wiki: string;
   photo: string;
+  imgTL: string;
+  imgTR: string;
   desc: string;
   detail: string;
   concepts: string[];

@@ -195,7 +195,7 @@ export default function GameDetail({ game }: { game: Game }) {
       {/* Header image */}
       <div
         className="relative h-[240px] overflow-hidden rounded-t-2xl mx-6 sm:h-[300px]"
-        style={{ backgroundColor: game.ibg }}
+        style={{ background: `linear-gradient(to right, ${game.imgTL}, ${game.imgTR})` }}
       >
         {!imgError ? (
           <Image

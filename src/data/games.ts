@@ -17,6 +17,8 @@ export const GAMES: Game[] = [
     bgg: 30549,
     wiki: "Pandemic_(board_game)",
     photo: "/games/pandemic.webp",
+    imgTL: "#020619",
+    imgTR: "#040519",
     desc: "Discover how diseases spread, vaccines work, and the real science behind stopping global outbreaks.",
     detail:
       "Pandemic connects directly to epidemiology \u2014 the science of how diseases spread through populations. The game models real concepts like quarantine, contact tracing, and the race to develop vaccines. Players learn about infection rates, global health teamwork, and why handwashing literally destroys virus shells. Every mechanic reflects a real public health strategy.",
@@ -110,6 +112,8 @@ export const GAMES: Game[] = [
     bgg: 167791,
     wiki: "Terraforming_Mars_(board_game)",
     photo: "/games/terraforming-mars.webp",
+    imgTL: "#e0cbb4",
+    imgTR: "#ece3d6",
     desc: "Explore what it would really take to make Mars livable \u2014 from warming the planet to breathing its air.",
     detail:
       "Terraforming Mars is grounded in real planetary science. The game explores how greenhouse gases, giant mirrors, and microbial seeding could change a planet\u2019s climate over centuries. It covers atmospheric chemistry, Mars geology, and the engineering challenges of colonizing another world. Real scientists study every strategy shown in this game.",
@@ -209,6 +213,8 @@ export const GAMES: Game[] = [
     bgg: 266192,
     wiki: "Wingspan_(board_game)",
     photo: "/games/wingspan.webp",
+    imgTL: "#d9d9c9",
+    imgTR: "#dcdccf",
     desc: "Each card represents a real bird species. Discover ecology, habitats, and what it takes for wildlife to thrive.",
     detail:
       "Wingspan teaches ornithology and real ecology. Every bird card reflects accurate traits, diets, and habitats. Players learn about food webs, carrying capacity, biodiversity, and migration guided by Earth\u2019s magnetic field and stars. The game is used in real classrooms as a biology and conservation learning tool.",
@@ -314,6 +320,8 @@ export const GAMES: Game[] = [
     bgg: 1294,
     wiki: "Cluedo",
     photo: "/games/clue.webp",
+    imgTL: "#110e2e",
+    imgTR: "#75cbf1",
     desc: "Use deduction and evidence just like real forensic scientists to solve mysteries step by step.",
     detail:
       "Clue mirrors the scientific method perfectly \u2014 form a hypothesis, gather evidence, eliminate possibilities, and draw conclusions. Real forensic scientists use fingerprints, DNA, fiber analysis, and handwriting examination with the exact same logical process players use every turn. The game builds critical thinking skills that transfer to real scientific inquiry.",
@@ -412,6 +420,8 @@ export const GAMES: Game[] = [
     bgg: 13,
     wiki: "Catan_(board_game)",
     photo: "/games/catan.webp",
+    imgTL: "#b74142",
+    imgTR: "#b94445",
     desc: "Trade resources, build cities, and explore how geography and economics shaped human settlements.",
     detail:
       "Catan models real geographic and economic concepts. Resource scarcity, settlement patterns, and infrastructure development mirror how human civilizations have grown. The hexagonal tiles map landscapes just as geographers do. The game reflects probability, trade economics, and the real environmental impact of expansion.",
@@ -511,6 +521,8 @@ export const GAMES: Game[] = [
     bgg: 436126,
     wiki: "Finspan",
     photo: "/games/finspan.webp",
+    imgTL: "#f8fbfc",
+    imgTR: "#def0f5",
     desc: "Design fish species and discover how real adaptations \u2014 fins, scales, and colors \u2014 help creatures survive.",
     detail:
       "Finspan models real evolutionary biology. Each fin shape and trait connects to actual fish adaptations shaped by natural selection. Players learn about bioluminescence, hydrodynamics, camouflage, and how the lateral line gives fish extraordinary sensory abilities beyond human capability.",
@@ -616,6 +628,8 @@ export const GAMES: Game[] = [
     bgg: 284083,
     wiki: "The_Crew:_The_Quest_for_Planet_Nine",
     photo: "/games/the-crew.webp",
+    imgTL: "#0b080b",
+    imgTR: "#030303",
     desc: "Work like real astronauts \u2014 coordinate through silent signals to complete a deep space mission.",
     detail:
       "The Crew reflects real space mission dynamics: communication under constraint, mission roles, and coordinating under pressure. Planet Nine may actually exist based on gravitational anomalies in the outer solar system. Deep-space communication genuinely involves long delays \u2014 just as the game simulates with its communication rules.",
@@ -715,6 +729,8 @@ export const GAMES: Game[] = [
     bgg: 43443,
     wiki: "Castle_Panic",
     photo: "/games/castle-panic.webp",
+    imgTL: "#b93e2b",
+    imgTR: "#b33232",
     desc: "Defend your castle and discover the real engineering behind medieval fortifications \u2014 walls, towers, and moats.",
     detail:
       "Real castles were engineering marvels built using physics and mathematics. Stone walls 6\u201310 feet thick, round towers to deflect projectiles, strategic arrow slits \u2014 all designed to absorb, redirect, and resist forces. Castle Panic lets players experience defensive engineering principles firsthand through every card they play.",
@@ -820,6 +836,8 @@ export const GAMES: Game[] = [
     bgg: 9209,
     wiki: "Ticket_to_Ride_(board_game)",
     photo: "/games/ticket-to-ride.webp",
+    imgTL: "#e8dcd0",
+    imgTR: "#f5f3f3",
     desc: "Build rail routes across America and learn how transportation networks shaped cities and history.",
     detail:
       "Ticket to Ride models real geography and network science. The transcontinental railroad transformed America in 1869 \u2014 and the game shows why route planning matters. Players explore friction, traction, probability of route blockage, and how transportation networks build or break communities over time.",
@@ -925,6 +943,8 @@ export const GAMES: Game[] = [
     bgg: 178900,
     wiki: "Codenames_(board_game)",
     photo: "/games/codenames.webp",
+    imgTL: "#6b0700",
+    imgTR: "#033551",
     desc: "Think like a spy! Discover how real codes, ciphers, and secret communications have shaped history.",
     detail:
       "Codenames mirrors real cryptography and intelligence work. Throughout history, spies have used ciphers, invisible ink, and coded signals. The game develops core intelligence analyst skills: word association, logical deduction, pattern recognition, and communicating under uncertainty \u2014 all used in real espionage.",
@@ -1030,6 +1050,8 @@ export const GAMES: Game[] = [
     bgg: 369436,
     wiki: "HerStory_(card_game)",
     photo: "/games/herstory.webp",
+    imgTL: "#ffffff",
+    imgTR: "#ffffff",
     desc: "Celebrate real women who changed STEM \u2014 from Marie Curie to Mae Jemison \u2014 through discovery and play.",
     detail:
       "HerStory connects players to real women who transformed science, math, and exploration. Ada Lovelace wrote the world\u2019s first algorithm. Katherine Johnson calculated Apollo 11\u2019s trajectory. Marie Curie won Nobel Prizes in two different sciences. The game shows that STEM has always been shaped by brilliant people from all backgrounds.",
@@ -1132,6 +1154,8 @@ export const GAMES: Game[] = [
     bgg: 376747,
     wiki: "Deep_Dive_(board_game)",
     photo: "/games/deep-dive.webp",
+    imgTL: "#ecf7ff",
+    imgTR: "#ebf7ff",
     desc: "Dive with penguins into ocean zones and discover how animals adapt to life at extreme depths.",
     detail:
       "Deep Dive mirrors real ocean science. Emperor penguins dive over 1,500 feet and stay underwater for 20 minutes. The game explores ocean zones, bioluminescence, food webs starting with plankton, and the engineering challenges of deep-sea exploration with ROVs. Every zone in the game is a real scientific classification.",
@@ -1237,6 +1261,8 @@ export const GAMES: Game[] = [
     bgg: 244228,
     wiki: "Reef_(board_game)",
     photo: "/games/reef.webp",
+    imgTL: "#20519c",
+    imgTR: "#1e2f3c",
     desc: "Grow a coral reef and discover the real marine ecosystems that support 25% of all ocean species.",
     detail:
       "Reef models how coral grows layer by layer over thousands of years, responding to water temperature, chemistry, and surrounding organisms. It teaches ocean pH sensitivity, how currents distribute nutrients, and natural geometric patterns in coral structures. It powerfully highlights that coral reefs \u2014 built over millennia \u2014 are being damaged in decades.",
@@ -1342,6 +1368,8 @@ export const GAMES: Game[] = [
     bgg: 365258,
     wiki: "World_Wonders_(board_game)",
     photo: "/games/world-wonders.webp",
+    imgTL: "#b5ad9b",
+    imgTR: "#b8b19f",
     desc: "Build legendary landmarks and discover the engineering, geometry, and physics behind history\u2019s greatest structures.",
     detail:
       "World Wonders explores incredible engineering achievements of ancient civilizations. The Great Pyramid aligns to true north with 0.05\u00b0 accuracy using only observation. Machu Picchu used earthquake-resistant stonework. The Colosseum held 50,000 spectators with retractable awnings. Each wonder reflects deep scientific knowledge built without modern tools.",
@@ -1447,6 +1475,8 @@ export const GAMES: Game[] = [
     bgg: 215463,
     wiki: "Tokyo_Highway_(board_game)",
     photo: "/games/tokyo-highway.webp",
+    imgTL: "#9fa2a1",
+    imgTR: "#9fa2a1",
     desc: "Balance elevated highway networks and discover the real physics of structural engineering and urban planning.",
     detail:
       "Tokyo Highway teaches real structural engineering through play. Tension, compression, and gravity all affect how elevated roads stay up \u2014 exactly the forces engineers calculate for real highways. Japan\u2019s roads must withstand earthquakes using special damping systems. The game also explores center of mass, spatial reasoning, and dense urban planning challenges.",

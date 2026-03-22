@@ -17,7 +17,7 @@ export default function GameCard({ game }: GameCardProps) {
       {/* Image area */}
       <div
         className="relative h-[190px] overflow-hidden"
-        style={{ backgroundColor: game.ibg }}
+        style={{ background: `linear-gradient(to right, ${game.imgTL}, ${game.imgTR})` }}
       >
         {!imgError ? (
           <Image
