@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* Brand Colors — Teal */
+  --color-teal-50: #E1F5EE;
+  --color-teal-300: #9FE1CB;
+  --color-teal-600: #0F6E56;
+  --color-teal-800: #085041;
+
+  /* Brand Colors — Amber */
+  --color-amber-50: #FAEEDA;
+  --color-amber-300: #FAC775;
+  --color-amber-600: #BA7517;
+  --color-amber-900: #412402;
+
+  /* Brand Colors — Coral */
+  --color-coral-50: #FAECE7;
+  --color-coral-600: #993C1D;
+
+  /* Brand Colors — Purple */
+  --color-purple-50: #EEEDFE;
+  --color-purple-600: #534AB7;
+
+  /* Brand Colors — Blue */
+  --color-blue-50: #E6F1FB;
+  --color-blue-600: #185FA5;
+
+  /* Brand Colors — Green */
+  --color-green-50: #EAF3DE;
+  --color-green-600: #3B6D11;
+
+  /* Brand Colors — Pink */
+  --color-pink-50: #FBEAF0;
+  --color-pink-600: #993556;
+
+  /* Grays */
+  --color-gray-100: #F1EFE8;
+  --color-gray-200: #D3D1C7;
+  --color-gray-300: #B4B2A9;
+  --color-gray-500: #888780;
+  --color-gray-600: #5F5E5A;
+  --color-gray-800: #2C2C2A;
+
+  /* Semantic */
+  --color-background: #FFFCF7;
+  --color-foreground: #2C2C2A;
+
+  /* Fonts */
+  --font-display: var(--font-nunito), "Nunito", sans-serif;
+  --font-body: var(--font-lato), "Lato", sans-serif;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-body);
+}
