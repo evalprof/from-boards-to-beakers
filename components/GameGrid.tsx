@@ -1,4 +1,3 @@
-import { GAMES } from "@/lib/games";
 import type { Game, AgeBand } from "@/lib/types";
 import { GameCard } from "./GameCard";
 
@@ -30,8 +29,10 @@ type Filters = {
 };
 
 export function GameGrid({
+  games,
   searchParams,
 }: {
+  games: Game[];
   searchParams: { [k: string]: string | string[] | undefined };
 }) {
   const get = (k: string) => {
@@ -44,7 +45,7 @@ export function GameGrid({
     subject: get("subject") ?? "all",
     q: get("q") ?? "",
   };
-  const list = GAMES.filter((g) => matches(g, f));
+  const list = games.filter((g) => matches(g, f));
 
   return (
     <>

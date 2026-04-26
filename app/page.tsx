@@ -6,12 +6,16 @@ import { Filters } from "@/components/Filters";
 import { GameGrid } from "@/components/GameGrid";
 import { SubmitForm } from "@/components/SubmitForm";
 import { Footer } from "@/components/Footer";
+import { getAllGames } from "@/lib/db/games";
 
-export default function Home({
+export const revalidate = 3600;
+
+export default async function Home({
   searchParams,
 }: {
   searchParams: { [k: string]: string | string[] | undefined };
 }) {
+  const games = await getAllGames();
   return (
     <>
       <Nav />
@@ -25,7 +29,7 @@ export default function Home({
             <Filters />
           </Suspense>
         </div>
-        <GameGrid searchParams={searchParams} />
+        <GameGrid games={games} searchParams={searchParams} />
         <SubmitForm />
       </main>
       <Footer />

@@ -2,22 +2,25 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { getGameBySlug, getAllSlugs } from "@/lib/games";
+import { getGameBySlug, getAllSlugs } from "@/lib/db/games";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { Tabs } from "@/components/game-detail/Tabs";
 import { PdfButton } from "@/components/PdfButton";
 
-export function generateStaticParams() {
-  return getAllSlugs().map((slug) => ({ slug }));
+export const revalidate = 3600;
+
+export async function generateStaticParams() {
+  const slugs = await getAllSlugs();
+  return slugs.map((slug) => ({ slug }));
 }
 
-export function generateMetadata({
+export async function generateMetadata({
   params,
 }: {
   params: { slug: string };
-}): Metadata {
-  const game = getGameBySlug(params.slug);
+}): Promise<Metadata> {
+  const game = await getGameBySlug(params.slug);
   if (!game) return { title: "Game not found — From Boards to Beakers" };
   return {
     title: `${game.name} — From Boards to Beakers`,
@@ -25,8 +28,12 @@ export function generateMetadata({
   };
 }
 
-export default function GamePage({ params }: { params: { slug: string } }) {
-  const game = getGameBySlug(params.slug);
+export default async function GamePage({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const game = await getGameBySlug(params.slug);
   if (!game) notFound();
 
   return (
@@ -42,13 +49,15 @@ export default function GamePage({ params }: { params: { slug: string } }) {
         <div className="bg-white rounded-[20px] overflow-hidden border border-ink-100">
           <div className="flex gap-4 items-start p-6 border-b border-ink-100">
             <div className="w-[80px] h-[80px] rounded-xl bg-[#F5F7F5] p-1 flex-shrink-0">
-              <Image
-                src={`/games/${game.slug}.webp`}
-                alt={game.name}
-                width={80}
-                height={80}
-                className="w-full h-full object-contain"
-              />
+              {game.photo && (
+                <Image
+                  src={game.photo}
+                  alt={game.name}
+                  width={80}
+                  height={80}
+                  className="w-full h-full object-contain"
+                />
+              )}
             </div>
             <div className="flex-1 min-w-0">
               <span

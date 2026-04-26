@@ -9,13 +9,15 @@ export function GameCard({ game }: { game: Game }) {
       className="bg-white rounded-2xl border border-ink-100 cursor-pointer transition-all flex flex-col overflow-hidden no-underline text-inherit hover:border-teal-mid hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(15,110,86,0.12)]"
     >
       <div className="w-full h-[190px] bg-[#F5F7F5] rounded-t-xl p-2 flex items-center justify-center">
-        <Image
-          src={`/games/${game.slug}.webp`}
-          alt={game.name}
-          width={295}
-          height={190}
-          className="w-full h-full object-contain"
-        />
+        {game.photo && (
+          <Image
+            src={game.photo}
+            alt={game.name}
+            width={295}
+            height={190}
+            className="w-full h-full object-contain"
+          />
+        )}
       </div>
       <div className="px-[1.1rem] pt-4 pb-2 flex-1">
         <div className="font-display font-black text-base text-ink-900 mb-0.5">
