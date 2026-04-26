@@ -4,7 +4,21 @@ A website connecting board games (mainstream and non-mainstream) to STEM-themed 
 
 ## Project Context
 
-This is a **greenfield full-stack build** migrating from a single-file HTML prototype (`boards-to-beakers.html`). The prototype contains all current game data, styling, and layout decisions. Treat it as the source of truth for design tokens, game content structure, and visual direction.
+Originally a greenfield full-stack build migrating from a single-file HTML prototype (`Prototype/boards-to-beakers.html`). **Phases 1 and 2 are now shipped to production.** The prototype is preserved as a reference for design tokens and visual direction; the live source of truth is now the Next.js app under `app/`, `components/`, and `lib/`.
+
+## Current build status (2026-04-26)
+
+- **Live site**: https://from-boards-to-beakers.vercel.app
+- **GitHub**: https://github.com/evalprof/from-boards-to-beakers (deploys to Vercel from `main`)
+- **Phase 1 (shipped)**: Public site MVP — game library at `/`, detail pages at `/games/[slug]`, client-side jsPDF generator. Game data hard-coded in `lib/games.ts`.
+- **Phase 2 (shipped)**: Submission form persists to Supabase `submissions` table; each insert triggers a Resend email to `naturewarrior11@gmail.com`. RLS enabled, service role bypasses.
+- **Phases 3–5 (not yet started)**: see `/Users/peteyork/.claude/plans/i-want-you-to-curious-hummingbird.md` for the full plan. Phase 3 = move game data into Supabase; Phase 4 = `/admin` panel; Phase 5 = custom domain + SEO + a11y polish.
+
+## Important context for Claude
+
+- This is **Pete's personal project**, NOT Project Evident work. Notification email is `naturewarrior11@gmail.com` — never wire `pyork@projectevident.org` into FBtB.
+- Pete is **not a coder** — explain technical choices in plain language and walk through any browser-side steps click-by-click.
+- Always run `npm run build` (not just `npm run dev`) before pushing — production-only errors (Suspense, prerender) are a recurring trap.
 
 ## Stack
 
