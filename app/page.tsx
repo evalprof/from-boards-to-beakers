@@ -18,12 +18,15 @@ export default async function Home({
   const games = await getAllGames();
   return (
     <>
+      <a href="#library" className="skip-link">
+        Skip to game library
+      </a>
       <Nav />
       <Suspense fallback={null}>
         <Hero />
       </Suspense>
       <Stats />
-      <main className="max-w-[1280px] mx-auto px-8 py-8">
+      <main id="main" className="max-w-[1280px] mx-auto px-8 py-8">
         <div id="library">
           <Suspense fallback={null}>
             <Filters />
