@@ -1,4 +1,7 @@
-import type { Game } from "./types";
+// One-time seed source for Supabase. Imported only by scripts/seed.ts.
+// The runtime site reads from Supabase via lib/db/games.ts; this file
+// is NOT imported by app/, components/, or lib/ — keep it that way.
+import type { Game } from "../lib/types";
 
 export const GAMES: Game[] = [
   {
@@ -1186,11 +1189,3 @@ export const GAMES: Game[] = [
     ],
   },
 ];
-
-export function getGameBySlug(slug: string): Game | undefined {
-  return GAMES.find((g) => g.slug === slug);
-}
-
-export function getAllSlugs(): string[] {
-  return GAMES.map((g) => g.slug);
-}
