@@ -52,7 +52,11 @@ export function SubmitForm() {
           onSubmit={onSubmit}
           className="flex gap-3 max-w-[480px] mx-auto flex-wrap justify-center"
         >
+          <label htmlFor="submit-idea" className="sr-only">
+            Submit a game idea or STEM connection
+          </label>
           <input
+            id="submit-idea"
             type="text"
             value={value}
             onChange={(e) => setValue(e.target.value)}

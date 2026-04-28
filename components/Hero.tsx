@@ -54,10 +54,15 @@ export function Hero() {
       </p>
       <form
         onSubmit={applySearch}
+        role="search"
         className="flex max-w-[480px] mx-auto bg-white rounded-[50px] py-[5px] pr-[5px] pl-5 relative"
       >
+        <label htmlFor="hero-search" className="sr-only">
+          Search games or STEM topics
+        </label>
         <input
-          type="text"
+          id="hero-search"
+          type="search"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search games or STEM topics…"

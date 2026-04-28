@@ -3,6 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getGameBySlug, getAllSlugs } from "@/lib/db/games";
+import { SITE_NAME } from "@/lib/site-config";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { Tabs } from "@/components/game-detail/Tabs";
@@ -21,10 +22,39 @@ export async function generateMetadata({
   params: { slug: string };
 }): Promise<Metadata> {
   const game = await getGameBySlug(params.slug);
-  if (!game) return { title: "Game not found — From Boards to Beakers" };
+  if (!game) {
+    return { title: "Game not found" }; // Title template adds the site name
+  }
+  const ogTitle = `${game.name} — STEM Activity Sheet`;
+  const ogDescription = game.desc;
+  const path = `/games/${game.slug}`;
   return {
-    title: `${game.name} — From Boards to Beakers`,
-    description: game.desc,
+    title: game.name, // Title template will append "— From Boards to Beakers"
+    description: ogDescription,
+    alternates: { canonical: path },
+    openGraph: {
+      type: "article",
+      title: ogTitle,
+      description: ogDescription,
+      url: path,
+      siteName: SITE_NAME,
+      images: game.photo
+        ? [
+            {
+              url: game.photo,
+              width: 1200,
+              height: 630,
+              alt: `${game.name} cover image`,
+            },
+          ]
+        : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: ogTitle,
+      description: ogDescription,
+      images: game.photo ? [game.photo] : undefined,
+    },
   };
 }
 
