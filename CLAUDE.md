@@ -4,21 +4,24 @@ A website connecting board games (mainstream and non-mainstream) to STEM-themed 
 
 ## Project Context
 
-Originally a greenfield full-stack build migrating from a single-file HTML prototype (`Prototype/boards-to-beakers.html`). **Phases 1 and 2 are now shipped to production.** The prototype is preserved as a reference for design tokens and visual direction; the live source of truth is now the Next.js app under `app/`, `components/`, and `lib/`.
+Originally a greenfield full-stack build migrating from a single-file HTML prototype (`Prototype/boards-to-beakers.html`). **Phases 1, 2, and 3 are shipped to production.** The prototype is preserved as a reference for design tokens and visual direction; the live source of truth is now the Next.js app under `app/`, `components/`, `lib/`, and game content/photos in Supabase.
 
 ## Current build status (2026-04-26)
 
 - **Live site**: https://from-boards-to-beakers.vercel.app
 - **GitHub**: https://github.com/evalprof/from-boards-to-beakers (deploys to Vercel from `main`)
-- **Phase 1 (shipped)**: Public site MVP — game library at `/`, detail pages at `/games/[slug]`, client-side jsPDF generator. Game data hard-coded in `lib/games.ts`.
-- **Phase 2 (shipped)**: Submission form persists to Supabase `submissions` table; each insert triggers a Resend email to `naturewarrior11@gmail.com`. RLS enabled, service role bypasses.
-- **Phases 3–5 (not yet started)**: see `/Users/peteyork/.claude/plans/i-want-you-to-curious-hummingbird.md` for the full plan. Phase 3 = move game data into Supabase; Phase 4 = `/admin` panel; Phase 5 = custom domain + SEO + a11y polish.
+- **Phase 1 (shipped)**: Public site MVP — game library at `/`, detail pages at `/games/[slug]`, client-side jsPDF generator.
+- **Phase 2 (shipped)**: Submission form persists to Supabase `submissions` table; each insert triggers a Resend email. **Live recipient is `evalprof2@gmail.com`** (Resend sandbox restriction; see memory `project_from_boards_to_beakers.md` for the recipient routing story and how to change it later).
+- **Phase 3 (shipped — PR #7)**: Game data and photos moved into Supabase. 15 rows in `public.games` (scalar columns + JSONB for `concepts/roles/facts/tools/exps/books`); 15 photos in public `game-photos` storage bucket. Site reads via `lib/db/games.ts` (`getAllGames`/`getGameBySlug`/`getAllSlugs`) using the anon-key client at `lib/supabase-public.ts`. Home + detail pages are async with `revalidate = 3600`. Seed script at `scripts/seed.ts` (run via `npm run seed`).
+- **Phase 4 (next)**: `/admin` panel behind Supabase magic-link auth — CRUD for games and submissions review. **Will also implement on-demand revalidation** (`revalidatePath('/')` / `revalidatePath('/games/<slug>')` from save handlers) so admin edits appear instantly instead of waiting up to 1h for the Vercel Data Cache.
+- **Phase 5 (later)**: custom domain + SEO + a11y + Lighthouse polish. Custom domain also unlocks sending mail to any recipient (verified Resend domain), which would let us route notifications back to `naturewarrior11@gmail.com` if desired.
 
 ## Important context for Claude
 
-- This is **Pete's personal project**, NOT Project Evident work. Notification email is `naturewarrior11@gmail.com` — never wire `pyork@projectevident.org` into FBtB.
+- This is **Pete's personal project**, NOT Project Evident work. Submission notifications go to `evalprof2@gmail.com` (a personal Gmail) — never wire `pyork@projectevident.org` into FBtB.
 - Pete is **not a coder** — explain technical choices in plain language and walk through any browser-side steps click-by-click.
 - Always run `npm run build` (not just `npm run dev`) before pushing — production-only errors (Suspense, prerender) are a recurring trap.
+- After editing a row in Supabase, the live site can take up to **1 hour** to reflect the change (Vercel Data Cache TTL = `revalidate` setting). Manually redeploying does NOT bust this cache. Phase 4 will fix this with on-demand revalidation.
 
 ## Stack
 
@@ -46,15 +49,16 @@ Fonts: Nunito (display/headings, weight 700-900), Lato (body)
 
 ## Data Model
 
-Each game entry has:
-- `id`, `name`, `icon`, `photo` (webp image)
+Each game entry (`public.games` row) has:
+- `id`, `slug`, `name`, `icon`, `photo_path` (relative to `game-photos` bucket; resolved to public URL by `lib/db/games.ts` and exposed as `game.photo` on the `Game` type)
 - Color theming: `ibg`, `tc`, `tbg`
 - `stem` label, `subj`, `type`, `age`, `time`, `players`
-- `desc` (card summary), `detail` (expanded description)
-- `concepts[]`, `roles[]` (STEM careers), `facts[]`, `tools[]`
-- `exps[]` (hands-on experiments with title, steps[], and "why it works")
-- `books[]` (recommended reading with title, author, description, age range)
+- `"desc"` (card summary; quoted because `desc` is a SQL reserved word), `detail` (expanded description)
+- JSONB columns: `concepts[]`, `roles[]` (STEM careers), `facts[]`, `tools[]`, `exps[]` (experiments with title/steps/why-it-works), `books[]` (recommended reading)
 - External links: `bgg` (BoardGameGeek ID), `wiki`
+- `created_at`, `updated_at` (auto-bumped by trigger)
+
+RLS policy: public can SELECT; INSERT/UPDATE/DELETE locked (only service-role bypasses, used by `scripts/seed.ts` and the future Phase 4 admin handlers).
 
 ## Key Features (Priority Order)
 

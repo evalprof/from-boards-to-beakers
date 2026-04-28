@@ -8,7 +8,7 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
-import { GAMES } from "../lib/games";
+import { GAMES } from "./seed-data";
 
 const BUCKET = "game-photos";
 
